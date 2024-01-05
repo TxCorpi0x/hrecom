@@ -1,3 +1,4 @@
+# Borrowed from https://ethen8181.github.io/machine-learning/recsys/4_bpr.html
 import sys
 import numpy as np
 import pandas as pd
