@@ -10,6 +10,11 @@ from sklearn.metrics import roc_auc_score
 from sklearn.preprocessing import normalize
 from sklearn.neighbors import NearestNeighbors
 from scipy.sparse import csr_matrix, dok_matrix
+from common.constants import (
+    DEFAULT_USER_COL,
+    DEFAULT_ITEM_COL,
+    DEFAULT_PREDICTION_COL,
+)
 
 
 def create_matrix(data, users_col, items_col, ratings_col, threshold=None):
@@ -54,11 +59,11 @@ def create_matrix(data, users_col, items_col, ratings_col, threshold=None):
     # train and test split in downstream process, note we might purge
     # some users completely during this process
     data_user_num_items = (
-        data.groupby("user_id")
-        .agg(**{"num_items": ("movie_id", "count")})
+        data.groupby(DEFAULT_USER_COL)
+        .agg(**{"num_items": (DEFAULT_ITEM_COL, "count")})
         .reset_index()
     )
-    data = data.merge(data_user_num_items, on="user_id", how="inner")
+    data = data.merge(data_user_num_items, on=DEFAULT_USER_COL, how="inner")
     data = data[data["num_items"] > 1]
 
     for col in (items_col, users_col, ratings_col):
