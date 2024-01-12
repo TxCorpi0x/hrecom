@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.metrics import roc_auc_score, mean_squared_error
+from sklearn.metrics import roc_auc_score, ndcg_score
 from common.constants import (
     DEFAULT_USER_COL,
     DEFAULT_ITEM_COL,
@@ -8,7 +8,7 @@ from common.constants import (
 TOP_K_ERROR = "k for ranking metric should be smaller than top_k of recommendation."
 
 
-def auc_score(model, ratings):
+def auc_score(model, ratings, min_rate_value):
     """
     computes area under the ROC curve (AUC).
     The full name should probably be mean
@@ -31,21 +31,28 @@ def auc_score(model, ratings):
     """
 
     auc = 0.0
+    ndcg = 0.0
     n_users, n_items = ratings.shape
-    y_trues = []
-    y_preds = []
     for user, row in enumerate(ratings):
         y_pred = model._predict_user(user)
-        y_preds.append(y_pred)
+
         y_true = np.zeros(n_items)
         y_true[row.indices] = 1
-        y_trues.append(y_true)
 
-        auc += roc_auc_score(y_true, y_pred)
+        y_pred_b = np.zeros(n_items)
+        y_pred_b[y_pred > min_rate_value] = 1
+
+        try:
+            auc += roc_auc_score(y_true, y_pred)
+        except ValueError:
+            pass
+        # print(y_preds)
+        ndcg += ndcg_score([y_true], [y_pred_b])
 
     auc /= n_users
+    ndcg /= n_users
 
-    return auc, y_trues, y_preds
+    return auc, ndcg
 
 
 def get_user_hit(user_top_k, item_ids):

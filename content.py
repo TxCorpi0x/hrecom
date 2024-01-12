@@ -99,7 +99,10 @@ class ContentBased:
         return items_sim.drop([col1, col2, cross_col], axis=1)
 
     def get_new_ratings(
-        self, movies_sim_reduced_top, movies_users_ratings_high, new_users_rate_count=10
+        self,
+        movies_sim_reduced_top,
+        movies_users_ratings_high,
+        new_rates_per_item_count=10,
     ):
         col_original = DEFAULT_ITEM_COL + "_x"
         col_similar = DEFAULT_ITEM_COL + "_y"
@@ -118,6 +121,6 @@ class ContentBased:
                 axis=1,
             )
             .groupby(DEFAULT_USER_COL)
-            .head(new_users_rate_count)
+            .head(new_rates_per_item_count)
         )
         return new_ratings.rename(columns={col_similar: DEFAULT_ITEM_COL})

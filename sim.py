@@ -1,6 +1,6 @@
 import numpy as np
 from numpy.linalg import norm
-from py_stringmatching import Jaccard, OverlapCoefficient, Cosine
+from py_stringmatching import Jaccard, OverlapCoefficient, Cosine, TverskyIndex, Dice
 from common.enums import SimilarityMethod
 
 
@@ -15,6 +15,10 @@ class Similarity:
             return self.cosine(a, b)
         elif sim_method == SimilarityMethod.OverlapCoefficient:
             return self.overlap_coefficient(a, b)
+        elif sim_method == SimilarityMethod.TverskyIndex:
+            return self.tversky_index(a, b)
+        elif sim_method == SimilarityMethod.Dice:
+            return self.dice(a, b)
         else:
             raise Exception("unknown similarity method")
 
@@ -28,4 +32,12 @@ class Similarity:
 
     def overlap_coefficient(self, a, b):
         method = OverlapCoefficient()
+        return method.get_sim_score(a, b)
+
+    def tversky_index(self, a, b):
+        method = TverskyIndex()
+        return method.get_sim_score(a, b)
+
+    def dice(self, a, b):
+        method = Dice()
         return method.get_sim_score(a, b)

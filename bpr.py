@@ -10,11 +10,7 @@ from sklearn.metrics import roc_auc_score
 from sklearn.preprocessing import normalize
 from sklearn.neighbors import NearestNeighbors
 from scipy.sparse import csr_matrix, dok_matrix
-from common.constants import (
-    DEFAULT_USER_COL,
-    DEFAULT_ITEM_COL,
-    DEFAULT_PREDICTION_COL,
-)
+from common.constants import DEFAULT_USER_COL, DEFAULT_ITEM_COL, DEFAULT_TEST_SIZE
 
 
 def create_matrix(data, users_col, items_col, ratings_col, threshold=None):
@@ -76,7 +72,7 @@ def create_matrix(data, users_col, items_col, ratings_col, threshold=None):
     return ratings, data
 
 
-def create_train_test(ratings, test_size=0.2, seed=1234):
+def create_train_test(ratings, test_size=DEFAULT_TEST_SIZE, seed=1234):
     """
     split the user-item interactions matrix into train and test set
     by removing some of the interactions from every user and pretend
@@ -247,7 +243,10 @@ class BPR:
 
         for idx, user in enumerate(sampled_users):
             pos_items = indices[indptr[user] : indptr[user + 1]]
-            pos_item = np.random.choice(pos_items)
+            pos_item = 0
+            neg_item = 0
+            if len(pos_items) > 0:
+                pos_item = np.random.choice(pos_items)
             neg_item = np.random.choice(n_items)
             while neg_item in pos_items:
                 neg_item = np.random.choice(n_items)

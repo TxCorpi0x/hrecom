@@ -1,117 +1,14 @@
-%% bare_jrnl.tex
-%% V1.4b
-%% 2015/08/26
-%% by Michael Shell
-%% see http://www.michaelshell.org/
-%% for current contact information.
-%%
-%% This is a skeleton file demonstrating the use of IEEEtran.cls
-%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
-%% journal paper.
-%%
-%% Support sites:
-%% http://www.michaelshell.org/tex/ieeetran/
-%% http://www.ctan.org/pkg/ieeetran
-%% and
-%% http://www.ieee.org/
-
-%%*************************************************************************
-%% Legal Notice:
-%% This code is offered as-is without any warranty either expressed or
-%% implied; without even the implied warranty of MERCHANTABILITY or
-%% FITNESS FOR A PARTICULAR PURPOSE! 
-%% User assumes all risk.
-%% In no event shall the IEEE or any contributor to this code be liable for
-%% any damages or losses, including, but not limited to, incidental,
-%% consequential, or any other damages, resulting from the use or misuse
-%% of any information contained here.
-%%
-%% All comments are the opinions of their respective authors and are not
-%% necessarily endorsed by the IEEE.
-%%
-%% This work is distributed under the LaTeX Project Public License (LPPL)
-%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
-%% distributed and modified. A copy of the LPPL, version 1.3, is included
-%% in the base LaTeX documentation of all distributions of LaTeX released
-%% 2003/12/01 or later.
-%% Retain all contribution notices and credits.
-%% ** Modified files should be clearly indicated as such, including  **
-%% ** renaming them and changing author support contact information. **
-%%*************************************************************************
-
-
-% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
-% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
-% *** with production work. The IEEE's font choices and paper sizes can   ***
-% *** trigger bugs that do not appear when using other class files.       ***                          ***
-% The testflow support page is at:
-% http://www.michaelshell.org/tex/testflow/
-
-
-
 \documentclass[journal]{IEEEtran}
-%
-% If IEEEtran.cls has not been installed into the LaTeX system files,
-% manually specify the path to it like:
-% \documentclass[journal]{../sty/IEEEtran}
+
 
 \usepackage[pdftex]{graphicx}
 \usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{tabularray}
+\usepackage{stfloats}
+\usepackage[table,xcdraw]{xcolor}
 \graphicspath{{../pdf/}{../jpeg/}}
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-
-
-
-
-% Some very useful LaTeX packages include:
-% (uncomment the ones you want to load)
-
-
-% *** MISC UTILITY PACKAGES ***
-%
-%\usepackage{ifpdf}
-% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
-% compilation based on whether the output is pdf or dvi.
-% usage:
-% \ifpdf
-%   % pdf code
-% \else
-%   % dvi code
-% \fi
-% The latest version of ifpdf.sty can be obtained from:
-% http://www.ctan.org/pkg/ifpdf
-% Also, note that IEEEtran.cls V1.7 and later provides a builtin
-% \ifCLASSINFOpdf conditional that works the same way.
-% When switching from latex to pdflatex and vice-versa, the compiler may
-% have to be run twice to clear warning/error messages.
-
-
-
-
-
-
-% *** CITATION PACKAGES ***
-%
-%\usepackage{cite}
-% cite.sty was written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
-% \cite{} output to follow that of the IEEE. Loading the cite package will
-% result in citation numbers being automatically sorted and properly
-% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
-% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
-% noadjust option (cite.sty V3.8 and later) if you want to turn this off
-% such as if a citation ever needs to be enclosed in parenthesis.
-% cite.sty is already installed on most LaTeX systems. Be sure and use
-% version 5.0 (2009-03-20) and later if using hyperref.sty.
-% The latest version can be obtained at:
-% http://www.ctan.org/pkg/cite
-% The documentation is contained in the cite.sty file itself.
-
-
-
-
-
 
 % *** GRAPHICS RELATED PACKAGES ***
 %
@@ -133,350 +30,33 @@
   % every instance of \includegraphics
   % \DeclareGraphicsExtensions{.eps}
 \fi
-% graphicx was written by David Carlisle and Sebastian Rahtz. It is
-% required if you want graphics, photos, etc. graphicx.sty is already
-% installed on most LaTeX systems. The latest version and documentation
-% can be obtained at: 
-% http://www.ctan.org/pkg/graphicx
-% Another good source of documentation is "Using Imported Graphics in
-% LaTeX2e" by Keith Reckdahl which can be found at:
-% http://www.ctan.org/pkg/epslatex
-%
-% latex, and pdflatex in dvi mode, support graphics in encapsulated
-% postscript (.eps) format. pdflatex in pdf mode supports graphics
-% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
-% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
-% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
-% which can result in "jaggedy"/blurry rendering of lines and letters as
-% well as large increases in file sizes.
-%
-% You can find documentation about the pdfTeX application at:
-% http://www.tug.org/applications/pdftex
 
 
-
-
-
-% *** MATH PACKAGES ***
-%
-%\usepackage{amsmath}
-% A popular package from the American Mathematical Society that provides
-% many useful and powerful commands for dealing with mathematics.
-%
-% Note that the amsmath package sets \interdisplaylinepenalty to 10000
-% thus preventing page breaks from occurring within multiline equations. Use:
-%\interdisplaylinepenalty=2500
-% after loading amsmath to restore such page breaks as IEEEtran.cls normally
-% does. amsmath.sty is already installed on most LaTeX systems. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/amsmath
-
-
-
-
-
-% *** SPECIALIZED LIST PACKAGES ***
-%
-%\usepackage{algorithmic}
-% algorithmic.sty was written by Peter Williams and Rogerio Brito.
-% This package provides an algorithmic environment fo describing algorithms.
-% You can use the algorithmic environment in-text or within a figure
-% environment to provide for a floating algorithm. Do NOT use the algorithm
-% floating environment provided by algorithm.sty (by the same authors) or
-% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
-% algorithm float types and packages that provide these will not provide
-% correct IEEE style captions. The latest version and documentation of
-% algorithmic.sty can be obtained at:
-% http://www.ctan.org/pkg/algorithms
-% Also of interest may be the (relatively newer and more customizable)
-% algorithmicx.sty package by Szasz Janos:
-% http://www.ctan.org/pkg/algorithmicx
-
-
-
-
-% *** ALIGNMENT PACKAGES ***
-%
-%\usepackage{array}
-% Frank Mittelbach's and David Carlisle's array.sty patches and improves
-% the standard LaTeX2e array and tabular environments to provide better
-% appearance and additional user controls. As the default LaTeX2e table
-% generation code is lacking to the point of almost being broken with
-% respect to the quality of the end results, all users are strongly
-% advised to use an enhanced (at the very least that provided by array.sty)
-% set of table tools. array.sty is already installed on most systems. The
-% latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/array
-
-
-% IEEEtran contains the IEEEeqnarray family of commands that can be used to
-% generate multiline equations as well as matrices, tables, etc., of high
-% quality.
-
-
-
-
-% *** SUBFIGURE PACKAGES ***
-%\ifCLASSOPTIONcompsoc
-%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-%\else
-%  \usepackage[caption=false,font=footnotesize]{subfig}
-%\fi
-% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
-% for subfigure.sty, the latter of which is no longer maintained and is
-% incompatible with some LaTeX packages including fixltx2e. However,
-% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
-% which will override IEEEtran.cls' handling of captions and this will result
-% in non-IEEE style figure/table captions. To prevent this problem, be sure
-% and invoke subfig.sty's "caption=false" package option (available since
-% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
-% handling of captions.
-% Note that the Computer Society format requires a larger sans serif font
-% than the serif footnote size font used in traditional IEEE formatting
-% and thus the need to invoke different subfig.sty package options depending
-% on whether compsoc mode has been enabled.
-%
-% The latest version and documentation of subfig.sty can be obtained at:
-% http://www.ctan.org/pkg/subfig
-
-
-
-
-% *** FLOAT PACKAGES ***
-%
-%\usepackage{fixltx2e}
-% fixltx2e, the successor to the earlier fix2col.sty, was written by
-% Frank Mittelbach and David Carlisle. This package corrects a few problems
-% in the LaTeX2e kernel, the most notable of which is that in current
-% LaTeX2e releases, the ordering of single and double column floats is not
-% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
-% single column figure to be placed prior to an earlier double column
-% figure.
-% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
-% corrections already built into the system in which case a warning will
-% be issued if an attempt is made to load fixltx2e.sty as it is no longer
-% needed.
-% The latest version and documentation can be found at:
-% http://www.ctan.org/pkg/fixltx2e
-
-
-%\usepackage{stfloats}
-% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
-% the ability to do double column floats at the bottom of the page as well
-% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
-% LaTeX2e). It also provides a command:
-%\fnbelowfloat
-% to enable the placement of footnotes below bottom floats (the standard
-% LaTeX2e kernel puts them above bottom floats). This is an invasive package
-% which rewrites many portions of the LaTeX2e float routines. It may not work
-% with other packages that modify the LaTeX2e float routines. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/stfloats
-% Do not use the stfloats baselinefloat ability as the IEEE does not allow
-% \baselineskip to stretch. Authors submitting work to the IEEE should note
-% that the IEEE rarely uses double column equations and that authors should try
-% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
-% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
-% such ways.
-% Do not attempt to use stfloats with fixltx2e as they are incompatible.
-% Instead, use Morten Hogholm'a dblfloatfix which combines the features
-% of both fixltx2e and stfloats:
-%
-% \usepackage{dblfloatfix}
-% The latest version can be found at:
-% http://www.ctan.org/pkg/dblfloatfix
-
-
-
-
-%\ifCLASSOPTIONcaptionsoff
-%  \usepackage[nomarkers]{endfloat}
-% \let\MYoriglatexcaption\caption
-% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
-%\fi
-% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
-% Axel Sommerfeldt. This package may be useful when used in conjunction with 
-% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
-% submissions have lists of figures/tables at the end of the paper and that
-% figures/tables without any captions are placed on a page by themselves at
-% the end of the document. If needed, the draftcls IEEEtran class option or
-% \CLASSINPUTbaselinestretch interface can be used to increase the line
-% spacing as well. Be sure and use the nomarkers option of endfloat to
-% prevent endfloat from "marking" where the figures would have been placed
-% in the text. The two hack lines of code above are a slight modification of
-% that suggested by in the endfloat docs (section 8.4.1) to ensure that
-% the full captions always appear in the list of figures/tables - even if
-% the user used the short optional argument of \caption[]{}.
-% IEEE papers do not typically make use of \caption[]'s optional argument,
-% so this should not be an issue. A similar trick can be used to disable
-% captions of packages such as subfig.sty that lack options to turn off
-% the subcaptions:
-% For subfig.sty:
-% \let\MYorigsubfloat\subfloat
-% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
-% However, the above trick will not work if both optional arguments of
-% the \subfloat command are used. Furthermore, there needs to be a
-% description of each subfigure *somewhere* and endfloat does not add
-% subfigure captions to its list of figures. Thus, the best approach is to
-% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
-% and instead reference/explain all the subfigures within the main caption.
-% The latest version of endfloat.sty and its documentation can obtained at:
-% http://www.ctan.org/pkg/endfloat
-%
-% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
-% later in the document, say, to conditionally put the References on a 
-% page by themselves.
-
-
-
-
-% *** PDF, URL AND HYPERLINK PACKAGES ***
-%
-%\usepackage{url}
-% url.sty was written by Donald Arseneau. It provides better support for
-% handling and breaking URLs. url.sty is already installed on most LaTeX
-% systems. The latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/url
-% Basically, \url{my_url_here}.
-
-
-
-
-% *** Do not adjust lengths that control margins, column widths, etc. ***
-% *** Do not use packages that alter fonts (such as pslatex).         ***
-% There should be no need to do such things with IEEEtran.cls V1.6 and later.
-% (Unless specifically asked to do so by the journal or conference you plan
-% to submit to, of course. )
-
-
-% correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 
 \begin{document}
 \bstctlcite{IEEEexample:BSTcontrol}
-%
-% paper title
-% Titles are generally capitalized except for words such as a, an, and, as,
-% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
-% not capitalized unless they are the first or last word of the title.
-% Linebreaks \\ can be used within to get better formatting as desired.
-% Do not put math or special symbols in the title.
-\title{Hybrid Improvement on Bayesian Rank Prediction and WR-MF}
-%
-%
-% author names and IEEE memberships
-% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
-% a structure at a ~ so this keeps an author's name from being broken across
-% two lines.
-% use \thanks{} to gain access to the first footnote area
-% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
-% was not built to handle multiple paragraphs
-%
+
+\title{Hybrid Improvement on Implicit Ranking Via BPR and WR-MF}
 
 \author{MEHDI VALINEJAD,~\IEEEmembership{Student}}% <-this % stops a space
-% \thanks{M. Shell was with the Department
-% of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
-% GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html).}% <-this % stops a space
-% \thanks{J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
-% \thanks{Manuscript received April 19, 2005; revised August 26, 2015.}
 
-
-
-% note the % following the last \IEEEmembership and also \thanks - 
-% these prevent an unwanted space from occurring between the last author name
-% and the end of the author line. i.e., if you had this:
-% 
-% \author{....lastname \thanks{...} \thanks{...} }
-%                     ^------------^------------^----Do not want these spaces!
-%
-% a space would be appended to the last name and could cause every name on that
-% line to be shifted left slightly. This is one of those "LaTeX things". For
-% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
-% "AB" then you have to do: "\textbf{A}\textbf{B}"
-% \thanks is no different in this regard, so shield the last } of each \thanks
-% that ends a line with a % and do not let a space in before the next \thanks.
-% Spaces after \IEEEmembership other than the last one are OK (and needed) as
-% you are supposed to have spaces between the names. For what it is worth,
-% this is a minor point as most people would not even notice if the said evil
-% space somehow managed to creep in.
-
-
-
-% The paper headers
-\markboth{Hybrid Improvement on Bayesian Rank Prediction and WR-MF, VOL.~01, NO.~01, JANUARY~2024}%
+\markboth{Hybrid Improvement on Implicit Ranking Via BPR and WR-MF, VOL.~01, NO.~01, JANUARY~2024}%
 {Shell \MakeLowercase{\textit{et al.}}: Hybrid Improvement on Bayesian Rank Prediction and WR-MF}
-% The only time the second header will appear is for the odd numbered pages
-% after the title page when using the twoside option.
-% 
-% *** Note that you probably will NOT want to include the author's ***
-% *** name in the headers of peer review papers.                   ***
-% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
-% you desire.
 
-
-
-
-% If you want to put a publisher's ID mark on the page you can do it like
-% this:
-%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
-% Remember, if you use this you must call \IEEEpubidadjcol in the second
-% column for its text to clear the IEEEpubid mark.
-
-
-
-% use for special paper notices
-%\IEEEspecialpapernotice{(Invited Paper)}
-
-
-
-
-% make the title area
 \maketitle
 
-% As a general rule, do not put math, special symbols or citations
-% in the abstract or keywords.
 \begin{abstract}
 To be completed
 \end{abstract}
 
-% Note that keywords are not normally used for peer review papers.
 \begin{IEEEkeywords}
 Hybrid Recommendation, Bayes Theorem, Bayesian Prediction, Item Based Recommendation System, Content Based Recommendation System, Weighted Ranking, Matrix Factorization, AUC, ROC.
 \end{IEEEkeywords}
 
-
-
-
-
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
 
-
-
-% The very first letter is a 2 line initial drop letter followed
-% by the rest of the first word in caps.
-% 
-% form to use if the first word consists of a single letter:
-% \IEEEPARstart{A}{demo} file is ....
-% 
-% form to use if you need the single drop letter followed by
-% normal text (unknown if ever used by the IEEE):
-% \IEEEPARstart{A}{}demo file is ....
-% 
-% Some journals put the first two words in caps:
-% \IEEEPARstart{T}{his demo} file is ....
-% 
-% Here we have the typical use of a "T" for an initial drop letter
-% and "HIS" in caps to complete the first word.
 \section{Introduction}
 
 \IEEEPARstart{I}{tem} recommendation plays a pivotal role in delivering tailored content or products to users, anticipating their preferences and needs. 
@@ -484,7 +64,7 @@ The fundamental objective of this task is to predict a personalized ranking amon
 In this paper, I delve into a prevalent scenario where implicit feedback, including user actions like clicks, acquisition or purchases, guides the 
 recommendation process.
 
-Common approaches to item recommendation from implicit feedback, such as matrix factorization (MF) or adaptive k-nearest-neighbor (kNN), 
+Common approaches to item recommendation from implicit feedback, such as matrix factorization (MF) or adaptive k-nearest-neighbor (KNN), 
 have been designed with the aim of personalized ranking. However, an intriguing observation surfaces: these methods, despite their 
 intended purpose, are not directly optimized for the intricate task of ranking. In response to this gap, my research uses a set of
 optimization criterion, termed BPR-Opt \cite{rendle2012bpr} and WR-MF \cite{8252119}, specifically tailored for personalized ranking. 
@@ -493,14 +73,73 @@ This criterion arises as the maximum posterior estimator derived from a Bayesian
 In an effort to enhance the efficacy of BPR and WR-MF approach, I propose the incorporation of Content-Based analysis and ranking. 
 This strategic addition aims to elevate the probability and evaluation metrics of BPR and WR-MF, further refining the accuracy and 
 relevance of personalized recommendations. In the realm of content-based analysis, I aim to elevate the metrics of BPR and WR-MF 
-through enhancements utilizing Cosine and Jaccard Similarity.
+through enhancements utilizing Jaccard, Cosine, Overlap Coefficient, Tversky Index and Dice Similarity. 
 
+% === II. Literature Review ========================
+% =================================================================================
+\section{Literature Review}
 
+Recommendation systems play a crucial role in sifting through vast amounts of information. Nevertheless, they frequently encounter 
+challenges such as the cold start and sparsity problems, which hinder their overall effectiveness. Bayesian Personalized Ranking (BPR), 
+designed to predict the relative order of user items, has traditionally been suggested to tackle these issues within ranking-based 
+recommendation systems. However, conventional BPR methods heavily depend on implicit feedback and lack the inclusion of semantic 
+and visual sentiment information. To bolster the efficacy of BPR, recent studies indicate that 
+integrating diverse forms of side information, such as images, texts, videos, knowledge graphs, browsing history 
+\cite{10.1145/3132847.3132941}\cite{8689028} and social network data, \cite{WU2024121930} can mitigate the sparsity inherent in the rating matrix. 
 
+Employing a fusion of Convolutional Neural Networks (CNN) and Bayesian Personalized Ranking (BPR) presents a promising solution 
+to tackle the cold start problem in friend recommendation systems (BayDNN) \cite{10.1145/3132847.3132941}. This innovative 
+approach leverages the capabilities of deep neural networks to effectively handle scenarios where limited or no information is 
+available for new users or items.
 
+In response to the constraints of existing pairwise preference learning methods and "One-Class Collaborative Filtering", 
+MSBPR \cite{ZENG2023110165} introduces a 
+novel approach. Specifically, it addresses this limitation by formulating multi-pairwise preferences, achieved through a 
+more detailed categorization of user non-interacted items into the user's potentially favored degree, the user's disliked 
+degree, and the uncertain degree. This enhancement provides a more nuanced understanding of user preferences, contributing 
+to the effectiveness of the MSBPR model.
 
+Functioning as a content-based recommendation algorithm, Category-aided Multi-channel Bayesian Personalized Ranking (CMBPR) \cite{8689028} 
+seamlessly integrates users' detailed preference data by considering variances across distinct video categories and various user interactions. 
+Empirical results underscore the effectiveness of the CMBPR video recommendation algorithm, showcasing a significantly heightened level of 
+recommendation accuracy in comparison to traditional video recommendation algorithms. Notably, CMBPR adeptly addresses the challenges posed 
+by the "Long Tail" effect which is niche category short videos have the potential to expand and constitute a substantial proportion 
+of the overall recommended short videos, providing a robust solution to enhance the quality of video recommendations.
 
-% === II. Methodology ========================
+To mitigate the sparsity challenges inherent in rating systems, the VBPR model \cite{Liang2020497} underwent optimization from various visual 
+perspectives. This involved leveraging VGG features along with related visual attributes such as shape, color, and texture. 
+Extracting visual features, including color and texture, from images was instrumental in enhancing the VBPR model. This 
+optimization was built upon the foundation of the Matrix Factorization (MF) model.
+
+In practice, the mere observation of items by users doesn't necessarily imply a preference for those items. Moreover, when 
+dealing with the vast majority of items that go unobserved, it is oversimplified to categorize them as purely negative feedback. 
+Mean Bayesian Personalized Ranking algorithm (MBPR) \cite{8946325} building upon the Bayesian Personalized Ranking (BPR) approach
+categorizes observed interactions higher or lower than the average rating as positive or negative feedback and unobserved interactions 
+are labeled with random values within a defined range. random assignment reflects the uncertainty about whether a user prefers 
+unobserved items For each user, the interactions are categorized based on these criteria, offering a more nuanced and probabilistic
+representation of user preferences compared to simplistic binary classifications.
+
+The Listwise Bayesian Personalized Ranking (LBPR) \cite{He20171837} methodology is employed to calculate the likelihood of a ranking list for 
+subsequent computation. Following the prediction of categories, Point-of-Interest (POI) candidates are filtered accordingly and 
+ranked based on a dual strategy involving spatial influence and category ranking influence. This approach not only effectively 
+tackles computational challenges but also enriches our comprehension of transition patterns between POIs. The outcome is a more 
+robust and efficient next POI recommendation system within Location-Based Social Networks (LBSNs).
+
+EBPRMF is employed for learning within each cluster, selecting Points-of-Interest (POIs) closest to the user's preferences to 
+construct a recommendation list \cite{9296759}. This list is then presented to the user. Proposed as an improved iteration, EBPRMF refines 
+the BPRMF recommendation algorithm by adjusting the POI similarity measurement, thereby augmenting its overall accuracy. 
+Furthermore, to enhance recommendation diversity, this enhanced version introduces spectral clustering to the conventional 
+BPRMF recommendation algorithm.
+
+WR-MF \cite{he2017fast} enhances both the efficacy and efficiency of Matrix Factorization (MF) approaches in handling implicit feedback. We address two key 
+challenges present in current methodologies. Firstly, many existing approaches tend to assign a uniform weight to unobserved 
+feedback to mitigate computational complexity arising from the extensive space of unobserved data. However, this uniform 
+assumption does not hold in real-world scenarios. Secondly, most methods are formulated in an offline context, lacking the 
+adaptability required for the dynamic nature of online data. this method aims to tackle one-class collaborative filtering (OCCF) 
+challenges through two distinct approaches: weighted low-rank approximation and negative example sampling which encompasses
+assigning weights to the missing data according to the popularity of the items \cite{he2017fast}.
+
+% === III. Methodology ========================
 % =================================================================================
 \section{Methodology}
 
@@ -510,14 +149,43 @@ features from the content of items and leveraging them to establish similarity b
 selecting items with prior ratings for a specific user, considering them as potential items of interest related to 
 the user's preferences. These selected items are then added to the list of highly ranked items for each user, thereby 
 enhancing the recommendation system by incorporating both content-based and collaborative filtering approaches.
+employing Category-aided Multi-channel Bayesian Personalized Ranking \cite{8689028} integrates multi-relational feedback sampling 
+and category-aided sampling simultaneously to address this challenge. tourist attraction recommendation system, grounded in SS and 
+enhanced VBPR, attained a commendable level of accuracy, effectively met user expectations, and significantly mitigated issues 
+related to data sparsity.
 
-Given \(Sr(u_i)\) as the set of similar items for a particular user \(u_i\) with ranking higher than \(min_r\), 
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=3.5in]{picture/Novel-Ranks.png}
+  By detecting positive rates corresponding items, novel rates will be added to the initial dataset. the similarity measure is
+  responsible for matching similar items.
+  \DeclareGraphicsExtensions.
+  \caption{Simple loop of novel rate addition}
+  \label{fig:novel_rate}
+\end{figure}
+
+\(Sims(I_i,I_j)\) computes the collection of akin items, given a minimum measured similarity threshold \(min_s\) that serves as the 
+minimum acceptable similarity level between the items \(I_i\) and \(I_j\) This function is designed to generate a list of items 
+that exhibit a degree of similarity equal to or greater than the specified minimum threshold, offering a comprehensive overview 
+of related items in the context of their similarity to \(I_i\).
+
+\[
+  Sims(I_i, I_j) = \left\{ \begin{array}{ll}
+    Sim(I_j,I_j) & \mbox{if $ \geq min_s$};\\
+      & \mbox{if $ < min_s$}.\end{array} \right.
+\]
+
+
+\(Sim(I_i,I_j)\)  calculates the similarity between two items based on content-based metrics such as genre, tags, reviews, etc., 
+utilizing Jaccard, Cosine, Overlap Coefficient \cite{953532}, Tversky Index and Dice similarity measures.
+
+Given \(Sr(u_j)\) as the set of similar items for a particular user \(u_j\) with ranking higher than \(min_r\), 
 the process involves computing the collection of movies that are similar to the user's top-rated movies (those with ratings
 higher than \(min_r\)).
 \[
-  Sr(u_i) = \left\{ \begin{array}{ll}
-    Sims(m_i) & \mbox{if $r_i \geq min_r$};\\
-      & \mbox{if $r_i < 3.0$}.\end{array} \right.
+  Sr(u_j) = \left\{ \begin{array}{ll}
+    Sims(I_i,I_j) & \mbox{if $r_j \geq min_r$};\\
+      & \mbox{if $r_j < min_r$}.\end{array} \right.
 \]
 
 Following the computation of the list of new ratings for each user, the next step involves appending these calculated 
@@ -536,28 +204,98 @@ Encompassing both the pre-existing ratings and the newly calculated ratings, \(N
 repository of user preferences, capturing the dynamics of both historical and recently generated ratings. this will be used as
 input variable to BPR and WR-MF algorithms for further and extended processing.
 
+The methodology involves augmenting new ratings based on the similar items to those liked by each user. This process entails a 
+random addition mechanism, where a shuffled list of users is employed to introduce new ratings for a specified number of items. 
+Essentially, this approach involves updating the dataset with a pre-processed data before training the BPR and WR-MF models.
+
+% === IV. Application ========================
+% =================================================================================
+\section{Application}
+
+The hybrid model utilized the ml-1m dataset. Additional ratings were introduced into the rating data frame based on movies with 
+similar genres, employing genre as the similarity measure. This was achieved by calculating the distance and filtering similar 
+movies using mentioned similarity measures, with a threshold set at 0.9. The process involved iterating through each 
+user's rankings and selecting movies with ranks exceeding 3.0 as positive feedback. This methodology essentially resembles 
+implicit ranking, treating movies with ratings higher than 3.0 as though they have been watched.
+
 Leveraging genres as a pivotal content medium, the extraction process involved meticulously curating a list of movies exhibiting a 
 similarity threshold surpassing 0.9 for each user's set of rankings. Following this, a nuanced approach was implemented to append 
 new ratings to these movies. The methodology for assigning these ratings was intricately tailored to align with the user's existing 
 ranked values, drawing inspiration from the reference movie ranks.
 
-This comprehensive procedure was systematically executed for a dataset comprising 100 movies, ensuring a diverse representation 
-across genres. To validate the robustness of the approach, the examination was extended to 100 users randomly sampled for each movie. 
+This comprehensive procedure was systematically executed for the dataset comprising 1 million movies, ensuring a diverse representation 
+across genres. To validate the robustness of the approach, the examination was extended to users randomly sampled for each movie. 
 This iterative analysis provided a nuanced understanding of how user preferences and rankings were dynamically influenced by the 
 intricate interplay of genres and similarity metrics within the dataset.
 
-\subsection*{1. BPR}
+% === V. Results ========================
+% =================================================================================
+\section{Results}
+
+\subsection*{1. Bayesian Personalized Ranking}
+
+As an initial note, the Amazon Movies and TV shows review dataset was employed in the BPR implementation to evaluate the method's 
+performance on other datasets with higher sparsity. The results indicate a lower AUC score, suggesting certain limitations in BPR's 
+predictive capabilities when applied to real data with increased sparsity.
+
+\begin{table}[htb]
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{|l|l|l|}
+  \hline
+  \textbf{AUC Score} & Train AUC & Test AUC \\ \hline
+  Movielens\_1M      & 0.886287  & 0.852563 \\ \hline
+  Movies\_and\_TV\_5 & 0.965592  & 0.773447 \\ \hline
+  \end{tabular}%
+  }
+\end{table}
+
+\begin{table*}[bp]
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{|c|c|ccc|ccc|rrc|}
+  \hline
+                                                &                                & \multicolumn{3}{c|}{\textbf{AUC}}                                                                                   & \multicolumn{3}{c|}{\textbf{NDCG}}                                                       & \multicolumn{3}{c|}{\textbf{Recall}}                                                                                                      \\ \cline{3-11} 
+  \multirow{-2}{*}{\textbf{Similarity Measure}} & \multirow{-2}{*}{\textbf{Set}} & \multicolumn{1}{c|}{\textbf{Prec1}} & \multicolumn{1}{c|}{\textbf{Prec2}} & \cellcolor[HTML]{F3F3F3}\textbf{Imp}    & \multicolumn{1}{c|}{\textbf{NDCG1}} & \multicolumn{1}{c|}{\textbf{NDCG2}} & \textbf{Imp} & \multicolumn{1}{l|}{\textbf{Recall1}} & \multicolumn{1}{l|}{\textbf{Recall2}} & \multicolumn{1}{l|}{\cellcolor[HTML]{F3F3F3}\textbf{imp}} \\ \hline
+  \textit{Jaccard}                              & \textit{Test}                  & \multicolumn{1}{c|}{0.29687}        & \multicolumn{1}{c|}{0.35556}        & \cellcolor[HTML]{F3F3F3}\textbf{5.87\%} & \multicolumn{1}{c|}{0.33593}        & \multicolumn{1}{c|}{0.39632}        & 6.04\%       & \multicolumn{1}{r|}{0.13444}          & \multicolumn{1}{r|}{0.14473}          & \cellcolor[HTML]{F3F3F3}\textbf{1.03\%}                   \\ \hline
+  \textit{Cosine}                               & \textit{Test}                  & \multicolumn{1}{c|}{0.29759}        & \multicolumn{1}{c|}{0.35748}        & \cellcolor[HTML]{F3F3F3}\textbf{5.99\%} & \multicolumn{1}{c|}{0.33655}        & \multicolumn{1}{c|}{0.39812}        & 6.16\%       & \multicolumn{1}{r|}{0.13396}          & \multicolumn{1}{r|}{0.143549}         & \cellcolor[HTML]{F3F3F3}\textbf{0.96\%}                   \\ \hline
+  \textit{Overlap Coefficient}                  & \textit{Test}                  & \multicolumn{1}{c|}{0.29716}        & \multicolumn{1}{c|}{0.36228}        & \cellcolor[HTML]{F3F3F3}\textbf{6.51\%} & \multicolumn{1}{c|}{0.33703}        & \multicolumn{1}{c|}{0.40489}        & 6.79\%       & \multicolumn{1}{r|}{0.13561}          & \multicolumn{1}{r|}{0.14691}          & \cellcolor[HTML]{F3F3F3}\textbf{1.13\%}                   \\ \hline
+  \cellcolor[HTML]{FFFFFF}\textit{TverskyIndex} & \textit{Test}                  & \multicolumn{1}{c|}{0.29814}        & \multicolumn{1}{c|}{0.35807}        & \cellcolor[HTML]{F3F3F3}\textbf{5.99\%} & \multicolumn{1}{c|}{0.33648}        & \multicolumn{1}{c|}{0.39856}        & 6.21\%       & \multicolumn{1}{r|}{0.13567}          & \multicolumn{1}{r|}{0.143}            & \cellcolor[HTML]{F3F3F3}\textbf{0.73\%}                   \\ \hline
+  \textit{Dice}                                 & \textit{Test}                  & \multicolumn{1}{c|}{0.29688}        & \multicolumn{1}{c|}{0.35263}        & \cellcolor[HTML]{F3F3F3}\textbf{5.58\%} & \multicolumn{1}{c|}{0.33552}        & \multicolumn{1}{c|}{0.39056}        & 5.50\%       & \multicolumn{1}{r|}{0.13458}          & \multicolumn{1}{r|}{0.14028}          & \cellcolor[HTML]{F3F3F3}\textbf{0.57\%}                   \\ \hline
+  \end{tabular}%
+  }
+  \caption{BPR results and metrics over train and test of ml-1m dataset}
+  \label{table:bpr_scores}
+\end{table*}
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=3.5in]{picture/BPR-AUC-Score.png}
+  For each similarity method, the chart values depict the percentage improvement achieved through the application of the respective 
+  similarity measurement using BPR.
+  \DeclareGraphicsExtensions.
+  \caption{Improvement of AUC score after application of the hybrid method}
+  \label{fig:bpr_auc}
+  \end{figure}
+  
+  \begin{figure}[!t]
+  \centering
+  \includegraphics[width=3.5in]{picture/BPR-NDCG-Score.png}
+  For each similarity method, the chart values depict the percentage improvement achieved through the application of the respective 
+  similarity measurement using BPR.
+  \DeclareGraphicsExtensions.
+  \caption{Improvement of NDCG score after application of the hybrid method}
+  \label{fig:bpr_ndcg}
+  \end{figure}
+
 Implemented the Bayesian personalized ranking \cite{rendle2012bpr} algorithm to forecast rankings using both the pure and extended ratings data frames. 
 Employed the AUC Score metric as a benchmark study, serving as a pivotal measure for evaluating the prediction accuracy.
 
+The updated rating data frame was supplied as input to BPR. The model was trained, and the AUC score of the predictions was 
+computed. Consequently, the ensuing table presents the AUC scores corresponding to various sets of input combinations for  
+\(Sr(u_j)\), aggregated across \(N\). This analysis provides a comprehensive overview of how different input configurations 
+impact the AUC performance metrics.
 
-
-% === IV. Dataset ========================
-% =================================================================================
-\section{Results}
-The findings demonstrate a minor improvement, revealing a 0.5\% enhancement in the prediction AUC score for the training set and a 
-noteworthy 0.7\% improvement for the test set when employing the Bayesian personalized ranking algorithm (BPR). 
-This evaluation encompassed a dataset comprising 100 movies, and the user ranks were systematically shuffled across 100 iterations.
+The findings demonstrate a minor improvement, revealing a 0.51\% enhancement in the prediction AUC score for the training set and a 
+noteworthy 1.21\% improvement for the test set when employing the Bayesian personalized ranking algorithm (BPR). 
 
 Notably, these positive outcomes underscore the efficacy of the BPR algorithm in refining predictive performance. Moreover, 
 the observed gains hint at the potential for even more remarkable results by augmenting the dataset with an increased number 
@@ -565,103 +303,82 @@ of novel ranks. As the number of ranks expands, there is a promising prospect of
 to capture nuanced patterns and enhance its overall predictive accuracy.
 
 
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-% \begin{figure}[!t]
-% \centering
-% \includegraphics[width=3.5in]{photo/hand-landmarks.png}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-% \caption{Simulation results for the network.}
-% \label{fig_sim}
-% \end{figure}
+Employing the aforementioned similarity measure to identify comparable items, the subsequent chart illustrates the enhancements 
+observed in both the AUC score and NDCG score across both the training and testing datasets. The utilization of this similarity 
+measure has evidently led to improvements in the predictive performance, as demonstrated by the notable shifts in AUC and NDCG 
+scores in the chart depicted in Fig(\ref{fig:bpr_auc}) and Fig(\ref{fig:bpr_ndcg}). as evident from the observations, the Overlap 
+coefficient and Cosine similarity measures exhibit superior performance in accurately matching similar items within the hybrid 
+implementation. beyond the numerical scores, the AUC is revealed to be less reliant on the recently added ratings, making it a 
+more robust method for predicting missing items.
 
-% Note that the IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
+\subsection*{2. Weighted Regularized Matrix Factorization}
+The revised rating data frame served as the input for WR-MF. After training the model, the Precision, Recall, and NDCG for the 
+predictions were calculated. Subsequently, the resulting table displays the Precision, Recall, and NDCG values associated with 
+diverse input combinations for \(Sr(u_j)\), aggregated across \(N\). This examination offers a thorough understanding of how 
+different input configurations influence not only AUC but also the Precision, Recall, and NDCG performance metrics.
 
-
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command,
-% and the \label for the overall figure must come after \caption.
-% \hfil is used as a separator to get equal spacing.
-% Watch out that the combined width of all the subfigures on a 
-% line do not exceed the text width or a line break will occur.
-%
-%\begin{figure*}[!t]
-%\centering
-%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
-%\label{fig_second_case}}
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat[]), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
-% labels, the optional argument to \subfloat must be present. If a
-% subcaption is not desired, just leave its contents blank,
-% e.g., \subfloat[].
+\begin{table*}[htb]
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{|c|c|ccc|ccc|}
+  \hline
+                                                                  &                                & \multicolumn{3}{c|}{\textbf{AUC}}                                                                                 & \multicolumn{3}{c|}{\textbf{NDCG}}                                                                                  \\ \cline{3-8} 
+  \multirow{-2}{*}{\textbf{Similarity Measure}}                   & \multirow{-2}{*}{\textbf{Set}} & \multicolumn{1}{c|}{\textbf{AUC1}} & \multicolumn{1}{c|}{\textbf{AUC2}} & \cellcolor[HTML]{F3F3F3}\textbf{Imp}    & \multicolumn{1}{c|}{\textbf{NDCG1}} & \multicolumn{1}{c|}{\textbf{NDCG2}} & \cellcolor[HTML]{F3F3F3}\textbf{Imp}    \\ \hline
+                                                                  & \textit{Train}                 & \multicolumn{1}{c|}{0.886071}      & \multicolumn{1}{c|}{0.889586}      & \cellcolor[HTML]{F3F3F3}\textbf{0.35\%} & \multicolumn{1}{c|}{0.532628}       & \multicolumn{1}{c|}{0.584745}       & \cellcolor[HTML]{F3F3F3}\textbf{5.21\%} \\ \cline{2-8} 
+  \multirow{-2}{*}{\textit{Jaccard}}                              & \textit{Test}                  & \multicolumn{1}{c|}{0.85208}       & \multicolumn{1}{c|}{0.863133}      & \cellcolor[HTML]{F3F3F3}\textbf{1.1\%}  & \multicolumn{1}{c|}{0.340224}       & \multicolumn{1}{c|}{0.377007}       & \cellcolor[HTML]{F3F3F3}\textbf{3.68\%} \\ \hline
+                                                                  & \textit{Train}                 & \multicolumn{1}{c|}{0.885419}      & \multicolumn{1}{c|}{0.890127}      & \cellcolor[HTML]{F3F3F3}\textbf{0.47\%} & \multicolumn{1}{c|}{0.534402}       & \multicolumn{1}{c|}{0.586267}       & \cellcolor[HTML]{F3F3F3}\textbf{5.19\%} \\ \cline{2-8} 
+  \multirow{-2}{*}{\textit{Cosine}}                               & \textit{Test}                  & \multicolumn{1}{c|}{0.851683}      & \multicolumn{1}{c|}{0.863857}      & \cellcolor[HTML]{F3F3F3}\textbf{1.22\%} & \multicolumn{1}{c|}{0.342056}       & \multicolumn{1}{c|}{0.376879}       & \cellcolor[HTML]{F3F3F3}\textbf{3.48\%} \\ \hline
+                                                                  & \textit{Train}                 & \multicolumn{1}{c|}{0.886287}      & \multicolumn{1}{c|}{0.891349}      & \cellcolor[HTML]{F3F3F3}\textbf{0.51\%} & \multicolumn{1}{c|}{0.534955}       & \multicolumn{1}{c|}{0.587915}       & \cellcolor[HTML]{F3F3F3}\textbf{5.30\%} \\ \cline{2-8} 
+  \multirow{-2}{*}{\textit{Overlap Coefficent}}                   & \textit{Test}                  & \multicolumn{1}{c|}{0.852563}      & \multicolumn{1}{c|}{0.864642}      & \cellcolor[HTML]{F3F3F3}\textbf{1.21\%} & \multicolumn{1}{c|}{0.342198}       & \multicolumn{1}{c|}{0.378239}       & \cellcolor[HTML]{F3F3F3}\textbf{3.60\%} \\ \hline
+  \cellcolor[HTML]{FFFFFF}                                        & \textit{Train}                 & \multicolumn{1}{c|}{0.886051}      & \multicolumn{1}{c|}{0.889753}      & \cellcolor[HTML]{F3F3F3}\textbf{0.37\%} & \multicolumn{1}{c|}{0.534571}       & \multicolumn{1}{c|}{0.587118}       & \cellcolor[HTML]{F3F3F3}\textbf{5.25\%} \\ \cline{2-8} 
+  \multirow{-2}{*}{\cellcolor[HTML]{FFFFFF}\textit{TverskyIndex}} & \textit{Test}                  & \multicolumn{1}{c|}{0.852189}      & \multicolumn{1}{c|}{0.86396}       & \cellcolor[HTML]{F3F3F3}\textbf{1.18\%} & \multicolumn{1}{c|}{0.341766}       & \multicolumn{1}{c|}{0.377536}       & \cellcolor[HTML]{F3F3F3}\textbf{3.58\%} \\ \hline
+                                                                  & \textit{Train}                 & \multicolumn{1}{c|}{0.885916}      & \multicolumn{1}{c|}{0.889575}      & \cellcolor[HTML]{F3F3F3}\textbf{0.37\%} & \multicolumn{1}{c|}{0.534394}       & \multicolumn{1}{c|}{0.584878}       & \cellcolor[HTML]{F3F3F3}\textbf{5.05\%} \\ \cline{2-8} 
+  \multirow{-2}{*}{\textit{Dice}}                                 & \textit{Test}                  & \multicolumn{1}{c|}{0.851509}      & \multicolumn{1}{c|}{0.863242}      & \cellcolor[HTML]{F3F3F3}\textbf{1.17\%} & \multicolumn{1}{c|}{0.341764}       & \multicolumn{1}{c|}{0.37685}        & \cellcolor[HTML]{F3F3F3}\textbf{3.51\%} \\ \hline
+  \end{tabular}%
+  }
+  \caption{WR-MF results and metrics over train and test of ml-1m dataset}
+  \label{table:wrmf_scores}
+\end{table*}
 
 
-% An example of a floating table. Note that, for IEEE style tables, the
-% \caption command should come BEFORE the table and, given that table
-% captions serve much like titles, are usually capitalized except for words
-% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
-% and up, which are usually not capitalized unless they are the first or
-% last word of the caption. Table text will default to \footnotesize as
-% the IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=3.5in]{picture/WR_MF-NDCG@k.png}
+  For each similarity method, the chart values depict the percentage improvement achieved through the application of the respective 
+  similarity measurement using WR-MF.
+  \DeclareGraphicsExtensions.
+  \caption{Improvement of NDCG score after application of the hybrid method}
+  \label{fig:wrmf_ndcg}
+\end{figure}
 
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=3.5in]{picture/WR_MF-Pecision@k.png}
+  For each similarity method, the chart values depict the percentage improvement achieved through the application of the respective 
+  similarity measurement using WR-MF.
+  \DeclareGraphicsExtensions.
+  \caption{Improvement of precision after application of the hybrid method}
+  \label{fig:wrmf_precision}
+\end{figure}
 
-% Note that the IEEE does not put floats in the very first column
-% - or typically anywhere on the first page for that matter. Also,
-% in-text middle ("here") positioning is typically not used, but it
-% is allowed and encouraged for Computer Society conferences (but
-% not Computer Society journals). Most IEEE journals/conferences use
-% top floats exclusively. 
-% Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the
-% \fnbelowfloat command of the stfloats package.
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=3.5in]{picture/WR_MF-Recall@k.png}
+  For each similarity method, the chart values depict the percentage improvement achieved through the application of the respective 
+  similarity measurement using WR-MF.
+  \DeclareGraphicsExtensions.
+  \caption{Improvement of recall after application of the hybrid method}
+  \label{fig:wrmf_recall}
+\end{figure}
 
+Applying the mentioned similarity measure to identify analogous items, the subsequent chart illustrates improvements observed in 
+NDCG@k, Precision@k, and Recall@k on testing datasets. The utilization of this similarity measure has evidently resulted in 
+enhanced predictive performance, as depicted by significant shifts in the mentioned evaluation metrics in Fig(\ref{fig:wrmf_ndcg}) 
+, Fig(\ref{fig:wrmf_recall}), and Fig(\ref{fig:wrmf_precision}). As discerned from the observations, the Overlap coefficient and Cosine similarity measures outperform 
+in accurately matching similar items within the hybrid implementation. Going beyond numerical scores, it is noteworthy that WR-MF 
+exhibits a greater dependence on initial data for implicit prediction compared to BPR. Consequently, precision improves more 
+significantly in WR-MF than in BPR.
 
-
-% === IV. Dataset ========================
+% === VI. Dataset ========================
 % =================================================================================
 \section{Dataset}
 
@@ -670,120 +387,39 @@ The ML-1M dataset was utilized to extract detailed information, encompassing ran
 This dataset stands as a valuable resource, facilitating a comprehensive exploration and analysis of the intricate relationships and 
 patterns within the realm of movies.
 
-% if have a single appendix:
-%\appendix[Proof of the Zonklar Equations]
-% or
-%\appendix  % for no appendix heading
-% do not use \section anymore after \appendix, only \section*
-% is possibly needed
+\subsection*{Movies and TV 5}
+The amazon dataset for the movies was utilized to assess BPR ranking performance, this dataset does not cover the detailed information
+about the movies, so the content extraction and similarity is not applicable for it.
 
-% use appendices with more than one appendix
-% then use \section to start each appendix
-% you must declare a \section before using any
-% \subsection or using \label (\appendices by itself
-% starts a section numbered zero.)
-%
+% === VI. Conclusion ========================
+% =================================================================================
+\section{Conclusion}
+In the realm of NDCG, the performance of both Bayesian Personalized Ranking (BPR) and Weight Regularized Matrix Factorization (WR-MF) 
+stands remarkably similar. However, an innovative approach involving the integration of pre-processed similar ratings into the 
+dataset reveals interesting nuances. This experimentation highlights that WR-MF demonstrates a heightened responsiveness to the 
+newly introduced ratings, leading to a more substantial improvement compared to BPR.
 
+While the comparative analysis underscores the enhanced sensitivity of WR-MF to the augmented dataset, it's important to consider 
+the computational aspects. BPR, in contrast, exhibits a lower computational demand, suggesting a trade-off between sensitivity to 
+new ratings and processing efficiency. This insight into their respective strengths and efficiencies adds valuable perspective to 
+the evaluation of recommendation algorithms.
 
-% \appendices
-% \section{Proof of the First Zonklar Equation}
-% Appendix one text goes here.
+Based on the comprehensive iterations conducted with both WR-MF and BPR, the Overlap Coefficient emerges as the standout similarity 
+measure. Through a thorough examination of their respective performances, the Overlap Coefficient consistently outshines other measures 
+in capturing the similarity between items. This finding underscores the robustness and efficacy of the Overlap Coefficient in the 
+context of recommendation systems, offering valuable insights for optimizing the similarity calculations in such algorithms.
 
-% you can choose not to have a title for an appendix
-% if you want by leaving the argument blank
-% \section{}
-% Appendix two text goes here.
-
-
-% use section* for acknowledgment
-% \section*{Acknowledgment}
-
-
-% The authors would like to thank...
-
-
-% Can use something like this to put references on a page
-% by themselves when using endfloat and the captionsoff option.
 \ifCLASSOPTIONcaptionsoff
   \newpage
 \fi
 
-
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
 \bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
 \bibliography{IEEEabrv,Bibliography}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-% \begin{thebibliography}{1}
 
-% \bibitem{lin2021ego2hands}
-% M.~Valinejad and M.~Y. Daly, \emph{Augmented Reality by Hand Gesture Recognized
-% Commands and Movements}, Turkey: Istanbul, 2023.
-
-
-% \end{thebibliography}
-
-% biography section
-% 
-% If you have an EPS/PDF photo (graphicx package needed) extra braces are
-% needed around the contents of the optional argument to biography to prevent
-% the LaTeX parser from getting confused when it sees the complicated
-% \includegraphics command within an optional argument. (You could create
-% your own custom macro containing the \includegraphics command to make things
-% simpler here.)
-%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
-% or if you just want to reserve a space for a photo:
-
-% \begin{IEEEbiography}{Michael Shell}
-% Biography text here.
-% \end{IEEEbiography}
-
-% if you will not have a photo at all:
 \begin{IEEEbiographynophoto}{Mehdi Valinejad}
 Received the B.S. degree in industrial engineering from the Azad University (South Tehran Branch) in 2012, and is currently working Master's. degree at the University of Bahcesehir at Istanbul.
 \end{IEEEbiographynophoto}
 
-% insert where needed to balance the two columns on the last page with
-% biographies
-%\newpage
-
-% \begin{IEEEbiographynophoto}{Jane Doe}
-% Biography text here.
-% \end{IEEEbiographynophoto}
-
-% You can push biographies down or up by placing
-% a \vfill before or after them. The appropriate
-% use of \vfill depends on what kind of text is
-% on the last page and whether or not the columns
-% are being equalized.
-
-%\vfill
-
-% Can be used to pull up biographies so that the bottom of the last one
-% is flush with the other column.
-%\enlargethispage{-5in}
-
-
-
-% that's all folks
 \end{document}
 
 
